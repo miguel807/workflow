@@ -10,6 +10,7 @@ class StudentModel(models.Model):
     name = models.CharField(max_length=50,unique=True)
     term = models.CharField(max_length=30)
     grade = models.IntegerField(default=1)
+    attempt = models.IntegerField(default=0)
     student_state_field = StateField() 
     
     

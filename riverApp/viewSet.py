@@ -21,14 +21,10 @@ class StudentViewSet(viewsets.ModelViewSet):
             name = request.data.get('name',"")
             student  = StudentModel.objects.get(name = name)  
             super_user = User.objects.get(id=1)
-            student.river.student_state_field.approve(as_user=super_user,next_state=State.objects.get(label='take_exam'))
-            if student.student_state_field == State.objects.get(label='take_exam'):
-                print("state: ", student.student_state_field)
-            student.river.student_state_field.approve(as_user=super_user,next_state=State.objects.get(label='finish'))
-                    
+            student.river.student_state_field.approve(as_user=super_user)       
             return Response({'status': 'Workflow init'})
         return Response({"error":"Error"})
 
         
-
+    
 
